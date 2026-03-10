@@ -9,13 +9,11 @@
 from maya import cmds, OpenMayaUI
 
 try: 
-    from PySide6 import QtWidgets, QtGui
+    from PySide6 import QtWidgets
     from shiboken6 import wrapInstance
-    QActionClass = QtGui.QAction
 except ImportError:
-    from PySide2 import QtWidgets, QtGui
+    from PySide2 import QtWidgets
     from shiboken2 import wrapInstance
-    QActionClass = QtWidgets.QAction
 
 
 TITLE = 'My Tool'
@@ -23,9 +21,11 @@ VERSION = '1.0.0'
 
 OBJECT_NAME = "MyToolWindow"
 WORKSPACE_CONTROL = f"{OBJECT_NAME}WorkspaceControl"
+
 MODULE_NAME = "dockable_widget" # module name for uiScript.
 UI_SCRIPT = f"import {MODULE_NAME} as _m\n_m.restore()"
 
+_window = None
 
 def show_ui():
     if cmds.workspaceControl(WORKSPACE_CONTROL, exists=True):
@@ -42,9 +42,7 @@ def show_ui():
     restore()
 
 
-_window = None
-
-def restore(*_args):
+def restore(*args):
 
     global _window
 
