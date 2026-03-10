@@ -1,0 +1,2 @@
+# maya_pyside_ui_template
+超シンプルなMaya用PySideウィジェットのテンプレ
