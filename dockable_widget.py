@@ -21,18 +21,10 @@ except ImportError:
 TITLE = 'My Tool'
 VERSION = '1.0.0'
 
-MODULE_NAME = "dockable_widget" # module name for uiScript.
 OBJECT_NAME = "MyToolWindow"
 WORKSPACE_CONTROL = f"{OBJECT_NAME}WorkspaceControl"
+MODULE_NAME = "dockable_widget" # module name for uiScript.
 UI_SCRIPT = f"import {MODULE_NAME} as _m\n_m.restore()"
-
-
-def show_ui():
-    from maya import OpenMayaUI
-    ptr = OpenMayaUI.MQtUtil.mainWindow()
-    maya_main_window = wrapInstance(int(ptr), QtWidgets.QWidget) if ptr else None
-    window = UI(parent=maya_main_window)
-    window.show()
 
 
 def show_ui():
