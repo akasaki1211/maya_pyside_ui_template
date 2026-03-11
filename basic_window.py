@@ -1,6 +1,8 @@
 #----------------------------------------------
 # Simple UI in Maya using PySide.
 #----------------------------------------------
+from pathlib import Path
+
 from maya import cmds
 
 try: 
@@ -15,7 +17,7 @@ except ImportError:
 
 TITLE = 'My Tool'
 VERSION = '1.0.0'
-
+ICON_PATH = Path('path/to/your/icon.png')
 
 def show_ui():
     from maya import OpenMayaUI
@@ -33,6 +35,8 @@ class UI(QtWidgets.QMainWindow):
 
     def _init_ui(self, *args):
         self.setWindowTitle(f'{TITLE} {VERSION}')
+        if ICON_PATH.exists():
+            self.setWindowIcon(QtGui.QIcon(ICON_PATH))
 
         # Exit Action
         exit_action = QActionClass("Exit", self)
