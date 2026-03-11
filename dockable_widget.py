@@ -5,6 +5,7 @@
 #   import dockable_widget
 #   dockable_widget.show_ui()
 #----------------------------------------------
+from pathlib import Path
 
 from maya import cmds, OpenMayaUI
 
@@ -22,12 +23,18 @@ VERSION = '1.0.0'
 OBJECT_NAME = "MyToolWindow"
 WORKSPACE_CONTROL = f"{OBJECT_NAME}WorkspaceControl"
 
-MODULE_NAME = "dockable_widget" # module name for uiScript.
+MODULE_NAME = Path(__file__).stem # module name for uiScript.
+#MODULE_NAME = "dockable_widget" 
 UI_SCRIPT = f"import {MODULE_NAME} as _m\n_m.restore()"
 
 _window = None
 
+
 def show_ui():
+    ensure_workspace_control()
+
+
+def ensure_workspace_control():
     if cmds.workspaceControl(WORKSPACE_CONTROL, exists=True):
         cmds.workspaceControl(WORKSPACE_CONTROL, e=True, restore=True)
     else:
