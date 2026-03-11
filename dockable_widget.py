@@ -39,18 +39,14 @@ def show_ui():
             loadImmediately=True,
         )
 
-    restore()
-
 
 def restore(*args):
 
     global _window
 
-    # call by uiScript()
     ptr = OpenMayaUI.MQtUtil.getCurrentParent()
     if not ptr:
-        # call by show_ui()
-        ptr = OpenMayaUI.MQtUtil.findControl(WORKSPACE_CONTROL)
+        return
 
     host = wrapInstance(int(ptr), QtWidgets.QWidget) if ptr else None
     if host is None:
