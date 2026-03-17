@@ -1,10 +1,10 @@
 # maya pyside ui templates
 Simple templates by PySide widgets for Maya
 
-|||
-|---|---|
-|`basic_window.py`|Window that can configure menu bar, toolbar, and status bar|
-|`dockable_widget.py`|Widget that can be docked to Maya UI. Can be restored on next Maya launch.|
+||||
+|---|---|---|
+|`basic_window.py`|Window that can configure menu bar, toolbar, and status bar|![basic_window.png](.docs/basic_window.png)|
+|`dockable_widget.py`|Widget that can be docked to Maya UI. Can be restored on next Maya launch.|![dockable_widget.png](.docs/dockable_widget.png)|
 
 References:
 - [Qt for Python](https://doc.qt.io/qtforpython-6/)
