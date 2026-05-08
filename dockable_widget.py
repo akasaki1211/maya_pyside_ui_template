@@ -20,11 +20,10 @@ except ImportError:
 TITLE = 'My Tool'
 VERSION = '1.0.0'
 
-OBJECT_NAME = "MyToolWindow"
+OBJECT_NAME = "MyToolWindow" # Set unique name
 WORKSPACE_CONTROL = f"{OBJECT_NAME}WorkspaceControl"
 
 MODULE_NAME = Path(__file__).stem # module name for uiScript.
-#MODULE_NAME = "dockable_widget" 
 UI_SCRIPT = f"import {MODULE_NAME} as _m\n_m.restore()"
 
 _window = None
