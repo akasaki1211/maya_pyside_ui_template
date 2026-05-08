@@ -17,12 +17,23 @@ except ImportError:
 
 TITLE = 'My Tool'
 VERSION = '1.0.0'
+OBJECT_NAME = "MyToolWindow" # Set unique name
 ICON_PATH = Path('path/to/your/icon.png')
 
-def show_ui():
+def show_ui(delete_existing: bool = True):
+    # Get wrapper of Maya main window
     from maya import OpenMayaUI
     ptr = OpenMayaUI.MQtUtil.mainWindow()
     maya_main_window = wrapInstance(int(ptr), QtWidgets.QWidget) if ptr else None
+
+    # Close existing window
+    if delete_existing:
+        for wgt in QtWidgets.QApplication.topLevelWidgets():
+            if wgt.objectName() == OBJECT_NAME:
+                wgt.close()
+                wgt.deleteLater()
+
+    # Show
     window = UI(parent=maya_main_window)
     window.show()
 
@@ -31,6 +42,7 @@ class UI(QtWidgets.QMainWindow):
 
     def __init__(self, parent=None, *args, **kwargs):
         super(UI, self).__init__(parent, *args, **kwargs)
+        self.setObjectName(OBJECT_NAME)
         self._init_ui()
 
     def _init_ui(self, *args):
