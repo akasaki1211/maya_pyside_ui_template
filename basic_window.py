@@ -45,6 +45,14 @@ class UI(QtWidgets.QMainWindow):
         self.setObjectName(OBJECT_NAME)
         self._init_ui()
 
+    def closeEvent(self, event: QtGui.QCloseEvent):
+        """Override closeEvent to perform cleanup if needed."""
+        
+        print("Window closed.")
+        
+        event.accept() # Accept the event to allow closing
+        #event.ignore() # Ignore the event to prevent closing (uncomment if you want to prevent closing)
+
     def _init_ui(self, *args):
         self.setWindowTitle(f'{TITLE} {VERSION}')
         if ICON_PATH.exists():
